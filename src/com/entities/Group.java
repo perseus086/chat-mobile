@@ -2,7 +2,6 @@ package com.entities;
 
 import java.util.List;
 
-import com.domainmodel.EUser;
 
 public class Group {
 
