@@ -1,5 +1,5 @@
 package com.entities;
-
+ 
 public class SMS {
 	
 	private String _id;
