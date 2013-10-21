@@ -91,7 +91,7 @@ public class Login extends HttpServlet {
 					}
 				}
 				else{
-					//System.err.println("Account does not exist");
+					System.err.println("Account does not exist");
 					sendMess("error", "User does not exist","","", response);
 					return;
 				}

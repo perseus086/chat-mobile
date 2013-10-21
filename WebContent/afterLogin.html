@@ -14,8 +14,8 @@
 </head>
 <body>
 
-	<!-- First page login -->
-	<div data-role="page" id="login-page" data-theme="b">
+	<!-- First page after login -->
+	<div data-role="page" id="main-page" data-theme="b">
 		<div data-role="header" data-position="fixed">
 			
 			
@@ -26,7 +26,7 @@
 				<ul>
 					<li><a href="a.html">Home</a></li>
 					<li><a href="#bar">Groups</a></li>
-					<li><a href="c.html">Profile</a></li>
+					<li><a href="#profile">Profile</a></li>
 				</ul>
 			</div>
 			<!-- /navbar -->
@@ -44,7 +44,58 @@
 	</div>
 	<!-- /page -->
 	
+	
+	<!-- Profile login -->
+	<div data-role="page" id="profile" data-theme="b">
+		<div data-role="header" data-position="fixed">
+			
+			
+			<h1>Mobile chat</h1>
+			<a href="#" id="logout" data-role="button" class="ui-btn-right">Logout</a>
+			<script src="js/main.js"></script>
+			<div data-role="navbar" id="navigbar" >
+				<ul>
+					<li><a href="a.html">Home</a></li>
+					<li><a href="#bar">Groups</a></li>
+					<li><a href="#profile">Profile</a></li>
+				</ul>
+			</div>
+			<!-- /navbar -->
+		</div>
+			
+		<div data-role="content">
+			
+			<a href="#" id="reset" data-role="button"  data-transition="slideup">Reset password</a>
+			<a href="#" id="delete" data-role="button"  data-transition="slideup">Delete account</a>
+			
+	
+		</div>
 
+		<div data-role="popup" id="popup-delete" data-theme="a"
+			class="ui-corner-bottom ui-content" data-overlay-theme="a">
+
+			<div data-role="content">
+				<h3 class="ui-title">Are you sure you want to delete your account?</h3>
+				<p>
+					This action will delete all your account
+				</p>
+				<a href="#" data-role="button" data-inline="true" data-rel="back"
+					data-theme="c"> Cancel </a> 
+				<a href="#" class="ui-corner-all"data-role="button" data-inline="true" data-transition="flow"
+					data-theme="b" id="delete-account-button"> Delete</a>
+			</div>
+		</div>
+		<div data-role="popup" id="popupInfo" class="ui-content" data-theme="e" style="max-width:350px;">
+  			</div>
+		<!-- /content -->
+		<div data-role="footer" data-position="fixed">
+		<h4>Please login</h4>
+		</div>
+		<!-- /footer -->
+	</div>
+	<!-- /page -->
+	
+	
 
 
 </body>

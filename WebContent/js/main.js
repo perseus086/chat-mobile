@@ -44,22 +44,13 @@ $(document).ready(function(){
 	});
 
 
-	$( document ).ajaxStart(function() {
-		$( "#loading" ).show();
-		$('#reset').attr('disabled','disabled');
-		$('#delete').attr('disabled','disabled');
-		$('#logout').attr('disabled','disabled');
-	});
-
-	$( document ).ajaxStop(function() {
-		$( "#loading" ).hide();
-		if(flag == 0){
-			$('#reset').removeAttr('disabled');
-			$('#delete').removeAttr('disabled');
-			$('#logout').removeAttr('disabled');
-		}
-		
-	});
+	 $( document ).ajaxStart(function() {
+		 $.mobile.loading('show');
+	 });
+	 	
+	 $( document ).ajaxStop(function() {
+		 $.mobile.loading('hide');
+	 });
 
 
 	$( "#reset" ).click(function(){
@@ -108,7 +99,7 @@ $(document).ready(function(){
 				flag=1;
 				localStorage.removeItem('email');
 				localStorage.removeItem('token');
-				newSuccess(msg.description);
+				newInfo(msg.description);
 				
 				$('#reset').attr('disabled','disabled');
 				$('#delete').attr('disabled','disabled');
@@ -121,7 +112,7 @@ $(document).ready(function(){
 
 			else if(msg.typeOfMessage == "error"){
 				flag = 0;
-				newError(msg.description);
+				newInfo(msg.description);
 
 			}
 		});
@@ -135,25 +126,13 @@ $(document).ready(function(){
 	 */	
 	function deletePopup(){
 
-		$( "#dialog-confirm" ).dialog({
-			autoOpen: true,
-			resizable: false,
-			height:200,
-			width: 500,
-			modal: true,
-			buttons: {
-				"Delete account": function() {
-					deleteAccount();
-					$( this ).dialog( "close" );
-				},
-				Cancel: function() {
-					$( this ).dialog( "close" );
-				}
-			}
-		});
+		$("#popup-delete").popup( "open", "tolerance", "0,0" );
 	}
 
 
+	$("#delete-account-button").click(function(){
+		deleteAccount();
+	});
 
 	///////DELETE////
 
@@ -174,7 +153,7 @@ $(document).ready(function(){
 				flag = 1;
 				localStorage.removeItem('email');
 				localStorage.removeItem('token');
-				newSuccess(msg.description);
+				newInfo(msg.description);
 				$('#reset').attr('disabled','disabled');
 				$('#delete').attr('disabled','disabled');
 				$('#logout').attr('disabled','disabled');
@@ -219,7 +198,7 @@ $(document).ready(function(){
 				$('#reset').attr('disabled','disabled');
 				$('#delete').attr('disabled','disabled');
 				$('#logout').attr('disabled','disabled');
-				newSuccess(msg.description);
+				newInfo(msg.description);
 				setTimeout(function() {
 					window.location.replace("login.html");
 				}, 2000);
@@ -243,19 +222,15 @@ $(document).ready(function(){
 
 	}
 
-	function newError(txt){
-		removeMessages();
-		$('.container-error').append("<div id=\"error\">"+txt+"</div>");
+	function newInfo(txt){
+		$("#popupInfo").empty();
+		$('#popupInfo').append("<p>"+txt+"</p>");
+		$("#popupInfo").popup( "open", "tolerance", "0,0" );
 	}
-
-	function newSuccess(txt){
-		removeMessages();
-		$('.container-error').append("<div id=\"success\">"+txt+"</div>");
-	}
-
-	function removeMessages(){
-		$('#error').remove();
-		$('#success').remove();
-	}
+	
+	$("#popupInfo").on( "popupafterclose", function( event, ui ) {
+		$("#popupInfo").empty();
+		
+	} );
 
 });

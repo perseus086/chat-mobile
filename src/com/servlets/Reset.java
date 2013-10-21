@@ -71,11 +71,21 @@ public class Reset extends HttpServlet {
 								+ "This is your new password\n"
 								+"Password: "+usr.getPassword();
 					
-					SystemAdmin.sendMail(email, "Password Reset", mailBody);
-					System.out.println("success");
-					sendMess("success", "Your password was changed.  Check your email <br>"
-							+ "You will be redirected in 5 seconds", response);    
-					return;
+					if (SystemAdmin
+							.sendMail2(email, "Password Reset", mailBody)) {
+						System.out.println("success");
+						sendMess(
+								"success",
+								"Your password was changed.  Check your email <br>"
+										+ "You will be redirected in 5 seconds",
+								response);
+						return;
+					} else {
+						sendMess("error",
+								"An error occured sending your email password"
+										+ "Please try again", response);
+					}
+					
 				}else{
 					sendMess("error", "Invalid user account",response);
 					return;

@@ -73,7 +73,7 @@ public class Reminder extends HttpServlet {
 						{
 							conn.edit(email, SystemAdmin.getTimestamp(), "timestamp");
 							
-							sendMess("success", "Your new password has been sent.  Check your email", response);
+							sendMess("success", "Your password has been sent.  Check your email", response);
 							return;
 						}
 						else{

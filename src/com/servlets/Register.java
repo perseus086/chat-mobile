@@ -80,7 +80,7 @@ public class Register extends HttpServlet {
 			/////////TRY CATCH EMAIL	//enviar mail
 			String mailBody = "Somebody, probably you, has registered your email address.\n"
 					+ "click the following link to complete registration: \n\n"
-					+ "localhost:8080/chat-mobile/Confirmation?token="+conn.lookUpToken(request.getParameter("email"))+
+					+ "http://localhost:8080/chat-mobile/Confirmation?token="+conn.lookUpToken(request.getParameter("email"))+
 					"&email="+request.getParameter("email");
 
 			if(SystemAdmin.sendMail2(request.getParameter("email"), "Account activation", mailBody))

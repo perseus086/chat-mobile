@@ -35,7 +35,7 @@ $(document).ready(function(){
 		.done(function( msg ) {
 			if(msg.typeOfMessage=="error"){
 				
-				newError(msg.description);
+				newInfo(msg.description);
 				$("#login-name").focus();
 				if(msg.description=="Wrong password"){
 					$("#login-pass").focus();
