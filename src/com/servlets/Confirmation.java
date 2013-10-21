@@ -73,7 +73,7 @@ public class Confirmation extends HttpServlet {
 							+ "password: "+usr.getPassword()+"\n\n"
 									+ "Keep it secret, keep it safe.";
 						
-					if(SystemAdmin.sendMail(request.getParameter("email"), "Account activation", mailBody))
+					if(SystemAdmin.sendMail2(request.getParameter("email"), "Account activation", mailBody))
 					{
 						sendPage("Successfull activation", "emailSent.jpg", "Please check your email a password should be received<br>"
 						+ "Login <a href=\"login.html\"> here </a>", response);
