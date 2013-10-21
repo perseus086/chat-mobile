@@ -45,7 +45,7 @@ $(document).ready(function(){
 				localStorage.setItem('token', msg.token);
 				localStorage.setItem('email', msg.email);
 				//window.location.replace("loginSuccess.html");
-				window.location.replace("afterLogin.html");
+				window.location.replace("groups.html");
 			}
 		});
 	}
@@ -72,7 +72,7 @@ $(document).ready(function(){
 			}				
 			else if(msg.info == "valid"){
 				
-				window.location.replace("afterLogin.html");
+				window.location.replace("groups.html");
 			}
 		});
 	}

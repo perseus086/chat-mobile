@@ -26,14 +26,14 @@ $(document).ready(function(){
 		.done(function( msg ) {
 			if(msg.info == "invalidSession")
 			{
-				alert("Session invalid please login again");
+				newInfo("Session invalid please login again");
 				localStorage.removeItem('email');
 				localStorage.removeItem('token');
 				window.location.replace("login.html");
 			}		
 
 			else if(msg.info == "valid"){
-				$( ".menu" ).show();
+
 			}
 		});
 	}
@@ -54,10 +54,8 @@ $(document).ready(function(){
 
 
 	$( "#reset" ).click(function(){
-
 		//alert("RESET");
 		resetPassword();
-
 	});
 
 
@@ -154,9 +152,6 @@ $(document).ready(function(){
 				localStorage.removeItem('email');
 				localStorage.removeItem('token');
 				newInfo(msg.description);
-				$('#reset').attr('disabled','disabled');
-				$('#delete').attr('disabled','disabled');
-				$('#logout').attr('disabled','disabled');
 				setTimeout(function() {
 					window.location.replace("login.html");
 				}, 2000);
@@ -195,9 +190,6 @@ $(document).ready(function(){
 				flag = 1;
 				localStorage.removeItem('email');
 				localStorage.removeItem('token');
-				$('#reset').attr('disabled','disabled');
-				$('#delete').attr('disabled','disabled');
-				$('#logout').attr('disabled','disabled');
 				newInfo(msg.description);
 				setTimeout(function() {
 					window.location.replace("login.html");
@@ -209,12 +201,9 @@ $(document).ready(function(){
 			else if(msg.typeOfMessage == "error"){
 				//show errors
 				flag = 1;
-				alert(msg.description);
+				newInfo(msg.description);
 				localStorage.removeItem('email');
 				localStorage.removeItem('token');
-				$('#reset').attr('disabled','disabled');
-				$('#delete').attr('disabled','disabled');
-				$('#logout').attr('disabled','disabled');
 				window.location.replace("login.html");
 
 			}

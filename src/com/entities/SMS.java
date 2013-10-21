@@ -1,6 +1,5 @@
 package com.entities;
 
-import com.domainmodel.*;
 public class SMS {
 	
 	private String _id;
